@@ -4,9 +4,11 @@
     <meta charset="UTF-8">
     <title>李洋的主页</title>
     <link rel="stylesheet" href="page/css/bootstrap.css">
+    <link rel="stylesheet" href="page/css/style.css">
 </head>
 <body>
 <header>
+
 
     <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
         <a class="navbar-brand" href="#">Carousel</a>
@@ -36,6 +38,9 @@
 <main role="main">
 
     <div id="myCarousel" class="carousel slide" data-ride="carousel">
+
+
+
         <ol class="carousel-indicators">
             <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
             <li data-target="#myCarousel" data-slide-to="1"></li>
@@ -164,8 +169,42 @@
         <p>&copy; 2017-2018 Company, Inc. &middot; <a href="#">Privacy</a> &middot; <a href="#">Terms</a></p>
     </footer>
 </main>
-     <script src="page/js/jquery-3.2.1.js"></script>
-     <script src="https://cdn.bootcss.com/popper.js"></script>
-     <script src="page/js/bootstrap.js"></script>
+<!-- count particles -->
+<div class="count-particles">
+    <span class="js-count-particles">--</span> particles
+</div>
+
+<!-- particles.js container -->
+<div id="particles-js"></div>
+
+
 </body>
+<!-- scripts -->
+<script src="page/js/jquery-3.2.1.js"></script>
+<script src="https://cdn.bootcss.com/popper.js"></script>
+<script src="page/js/bootstrap.js"></script>
+<script src="page/js/particles.min.js"></script>
+<script src="page/js/lib/app.js"></script>
+<script src="page/js/lib/stats.js"></script>
+<!-- stats.js -->
+<script>
+    var count_particles, stats, update;
+    stats = new Stats;
+    stats.setMode(0);
+    stats.domElement.style.position = 'absolute';
+    stats.domElement.style.left = '0px';
+    stats.domElement.style.top = '0px';
+    document.body.appendChild(stats.domElement);
+    count_particles = document.querySelector('.js-count-particles');
+    update = function() {
+        stats.begin();
+        stats.end();
+        if (window.pJSDom[0].pJS.particles && window.pJSDom[0].pJS.particles.array) {
+            count_particles.innerText = window.pJSDom[0].pJS.particles.array.length;
+        }
+        requestAnimationFrame(update);
+    };
+    requestAnimationFrame(update);
+</script>
+
 </html>
